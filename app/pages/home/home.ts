@@ -18,7 +18,7 @@ export class HomePage {
 
   showGiphy () {    
     let giphyModal = this.modalCtrl.create(GiphyModal);
-    giphyModal.onDidDismiss(() => this.rateService.appRate.promptForRating(false))
+    giphyModal.onDidDismiss(() => {this.rateService.appRate.promptForRating(false); console.log('dismiss')})
     giphyModal.present(GiphyModal);
   }
 }
@@ -34,8 +34,10 @@ export class HomePage {
         </ion-title>
       </ion-navbar>
     </ion-header>
-    <ion-content padding>
-      <img [src]="giphy">
+    <ion-content padding text-center>
+      <div class="center-vertical">
+        <img [src]="giphy">
+      </div>
     </ion-content>
   `
 })
@@ -49,6 +51,6 @@ export class GiphyModal {
     let url = "http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=corgi+puppy&rating=g";   
     this.http.get(url)
       .map(res => res.json())
-      .subscribe(res => this.giphy = res.data.fixed_width_downsampled_url)
+      .subscribe(res => this.giphy = res.data.fixed_height_downsampled_url)
   }
 }
