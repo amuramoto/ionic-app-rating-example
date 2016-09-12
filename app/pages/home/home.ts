@@ -27,15 +27,15 @@ export class HomePage {
 @Component({
   template: `
     <ion-header>
-      <ion-navbar>
-        <button (tap)="viewCtrl.dismiss()" clear>Close</button>
+      <ion-navbar ionic>
+        <button (tap)="viewCtrl.dismiss()" clear light>Close</button>
         <ion-title>
           Puppies
         </ion-title>
       </ion-navbar>
     </ion-header>
-    <ion-content padding text-center>
-      <div class="center-vertical">
+    <ion-content text-center>
+      <div class="container">
         <img [src]="giphy">
       </div>
     </ion-content>
